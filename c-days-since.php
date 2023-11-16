@@ -2,7 +2,7 @@
 /*
 Plugin Name: ✅ Days Since
 Plugin URI: #
-Description: Usage: <code>[c_days_since date='1/1/1990' format='true']</code> <code>[c_days_since date='Jan 1 1990' format='false']</code>
+Description: Usage: <code>[cwp_days_since date='1/1/1990' format='true']</code> <code>[cwp_days_since date='Jan 1 1990' format='false']</code>
 Author: conner
 Author URI: #
 version: 1.0.0
@@ -19,6 +19,8 @@ add_shortcode('cwp_days_since', 'cwp_register_shortcode_days_since');
 
 function cwp_register_shortcode_days_since($atts)
 {
+    $invalid_message = "Usage: <code>[cwp_days_since date='1/1/1990' format='true']</code> <code>[cwp_days_since date='Jan 1 1990' format='false']</code>";
+
     $format_number = false;
 
     if (isset($atts['format'])) {
@@ -51,7 +53,7 @@ function cwp_register_shortcode_days_since($atts)
             }
         }
 
-        return "Invalid date format";
+        return $invalid_message;
     }
-    return "Usage: <code>[c_days_since date='1/1/1990' format='true']</code> <code>[c_days_since date='Jan 1 1990' format='false']</code>";
+    return $invalid_message;
 }
